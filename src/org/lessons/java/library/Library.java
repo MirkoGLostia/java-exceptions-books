@@ -1,5 +1,7 @@
 package org.lessons.java.library;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Library {
@@ -9,10 +11,10 @@ public class Library {
         // arrays and variables
         int numberOfBooks;
         Books[] listOfBooks;
-        String titleBook = "";
-        int numberPagesBook = 0;
-        String authorBook = "";
-        String editorBook = "";
+        String titleBook;
+        int numberPagesBook;
+        String authorBook;
+        String editorBook;
 
         // set up array
         System.out.println("How many books do you want to add?");
@@ -57,6 +59,37 @@ public class Library {
 
         for (Books book : listOfBooks) {
             System.out.println(book);
+        }
+
+
+        // BONUS
+
+        FileWriter fileWriter = null;
+        try {
+            // provo ad aprirlo
+            fileWriter = new FileWriter("./bonus/bonus-library");
+
+            for (int i = 0; i < listOfBooks.length; i++) {
+                fileWriter.write((i + 1) + ") ");
+                fileWriter.write(listOfBooks[i].getTitle() + " ");
+                fileWriter.write(listOfBooks[i].getPageNumbers() + " ");
+                fileWriter.write(listOfBooks[i].getAuthor() + " ");
+                fileWriter.write(listOfBooks[i].getEditor() + " \n");
+
+            }
+
+        } catch (IOException e) {
+            System.out.println("Unable to write file");
+        } finally {
+
+            try {
+                if (fileWriter != null) {
+                    System.out.println("Chiudo il file");
+                    fileWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
 
