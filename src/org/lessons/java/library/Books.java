@@ -11,13 +11,13 @@ public class Books {
     // constructor
 
     public Books(String title, int pageNumbers, String author, String editor) throws IllegalArgumentException {
-        if (title.isEmpty()){
+        if (title == null || title.isBlank()){
             throw new IllegalArgumentException("no title inserted");
         } else if (pageNumbers == 0 || pageNumbers < 0) {
             throw new IllegalArgumentException("page number is invalid");
-        } else if (author.isEmpty()) {
+        } else if (author == null || author.isBlank()) {
             throw new IllegalArgumentException("no author inserted");
-        } else if (editor.isEmpty()) {
+        } else if (editor == null || editor.isBlank()) {
             throw new IllegalArgumentException("no editor inserted");
         }
         this.title = title;
@@ -50,7 +50,7 @@ public class Books {
     // setter
 
     public void setTitle(String title) throws IllegalArgumentException {
-        if (title.isEmpty()){
+        if (title == null || title.isBlank()){
             throw new IllegalArgumentException("no title inserted");
         }
         this.title = title;
@@ -64,16 +64,28 @@ public class Books {
     }
 
     public void setAuthor(String author) throws IllegalArgumentException {
-        if (author.isEmpty()) {
+        if (author == null || author.isBlank()) {
             throw new IllegalArgumentException("no author inserted");
         }
         this.author = author;
     }
 
     public void setEditor(String editor) throws IllegalArgumentException {
-        if (editor.isEmpty()) {
+        if (editor == null || editor.isBlank()) {
             throw new IllegalArgumentException("no editor inserted");
         }
         this.editor = editor;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "title='" + title + '\'' +
+                ", pageNumbers=" + pageNumbers +
+                ", author='" + author + '\'' +
+                ", editor='" + editor + '\'' +
+                '}';
     }
 }
