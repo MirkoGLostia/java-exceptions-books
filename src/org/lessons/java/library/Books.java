@@ -49,19 +49,31 @@ public class Books {
 
     // setter
 
-    public void setTitle(String title) {
+    public void setTitle(String title) throws IllegalArgumentException {
+        if (title.isEmpty()){
+            throw new IllegalArgumentException("no title inserted");
+        }
         this.title = title;
     }
 
-    public void setPageNumbers(int pageNumbers) {
+    public void setPageNumbers(int pageNumbers) throws IllegalArgumentException {
+        if (pageNumbers == 0 || pageNumbers < 0){
+            throw new IllegalArgumentException("page number is invalid");
+        }
         this.pageNumbers = pageNumbers;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(String author) throws IllegalArgumentException {
+        if (author.isEmpty()) {
+            throw new IllegalArgumentException("no author inserted");
+        }
         this.author = author;
     }
 
-    public void setEditor(String editor) {
+    public void setEditor(String editor) throws IllegalArgumentException {
+        if (editor.isEmpty()) {
+            throw new IllegalArgumentException("no editor inserted");
+        }
         this.editor = editor;
     }
 }
