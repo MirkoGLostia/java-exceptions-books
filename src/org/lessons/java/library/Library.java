@@ -1,5 +1,7 @@
 package org.lessons.java.library;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -64,6 +66,7 @@ public class Library {
 
         // BONUS
 
+        // write the array into the file
         FileWriter fileWriter = null;
         try {
             // provo ad aprirlo
@@ -92,6 +95,22 @@ public class Library {
             }
         }
 
+
+        // read the file
+        Scanner fileReader = null;
+        try {
+            fileReader = new Scanner(new File("./bonus/bonus-library"));
+            while (fileReader.hasNextLine()) {
+                String line = fileReader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
+        }
 
 
 
